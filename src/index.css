@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@import "leaflet/dist/leaflet.css";
+@import "leaflet.markercluster/dist/MarkerCluster.css";
+@import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+
+:root {
+  --nc-primary: #d35400;      /* Red Earth */
+  --nc-secondary: #2c3e50;    /* Deep Blue/Grey */
+  --nc-gold: #f1c40f;         /* Verified Gold */
+  --bg-light: #f4f6f8;
+}
+
+body {
+  @apply bg-[#f4f6f8] text-[#2c3e50] font-sans overflow-hidden;
+}
+
+/* Custom Leaflet Styles */
+.leaflet-container {
+  @apply w-full h-full;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-xl shadow-xl p-0 overflow-hidden border-none;
+}
+
+.leaflet-popup-content {
+  @apply m-0;
+  width: 280px !important;
+}
+
+.marker-pin {
+  @apply w-9 h-9 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-white transition-transform duration-200;
+}
+
+.marker-pin:hover {
+  @apply scale-110 z-[1000];
+}
+
+.glow-gold {
+  animation: glow 2s infinite;
+}
+
+.selected-marker-pin {
+  @apply scale-125 z-[2000] border-4 border-white shadow-2xl;
+  animation: selected-pulse 1.5s infinite;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 0 0 rgba(241, 196, 15, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(241, 196, 15, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(241, 196, 15, 0); }
+}
+
+@keyframes selected-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(211, 84, 0, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(211, 84, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(211, 84, 0, 0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 2;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 rounded-full hover:bg-gray-300 transition-colors;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e5e7eb transparent;
+}

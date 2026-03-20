@@ -1,0 +1,5 @@
+{
+  "name": "South African Innovation Landscape",
+  "description": "A production-ready mapping platform for community members, small business owners, and local innovators in South Africa.",
+  "requestFramePermissions": ["geolocation"]
+}
